@@ -18,6 +18,12 @@ Sober AI 的唯一认知与决策入口。
 | `llm/` | LLM 适配层 |
 | `output-parser/` | Brain 输出结构化解析 |
 
+## 契约
+
+- 回合类型：`types.ts`（`BrainTurnInput` / `BrainTurnOutput`）
+- 设计文档：`docs/BRAIN_TURN_CONTRACT.md`
+- Context SSOT：`src/runtime-context/`
+
 ## 边界
 
 - 不直接持有长期记忆存储

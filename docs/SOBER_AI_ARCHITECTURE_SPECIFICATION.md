@@ -998,6 +998,85 @@ ComfyUI / 静态插图管道 **不作为** Avatar 实时方案（DROP）。远�
 
 ---
 
+# 13. Future Product Model
+
+> 详细草案：`COMPANION_COLLECTION_DESIGN.md`  
+> **不改变** Phase 0.9 Runtime Contract；Alpha 仍以单 Companion 为唯一实现范围。
+
+## 13.1 Alpha vs Future
+
+| | Alpha | Future |
+|--|-------|--------|
+| 产品验证 | 单 Companion 跑通核心陪伴体验 | 在契约不变前提下扩展为 Companion Collection |
+| 用户心智 | 「一个人」 | 「我的伴侣们」——每人独立人生与关系 |
+| 实现范围 | 单一种子 Companion | 多 Companion；每回合仅激活其中一个 |
+
+## 13.2 Companion Collection（方向）
+
+未来支持多个 Companion。每个 Companion **独立拥有**：
+
+- Identity  
+- Personality  
+- Voice Profile  
+- Avatar Asset Pack  
+- Skills  
+- Relationship（相对该用户）  
+- Memory（相对该用户×该 Companion）  
+
+**不是** YeYe 式多角色 UGC 市场，也**不在本文设计抽卡系统实现**。
+
+切换 Companion = 切换完整资产与关系/记忆空间；禁止换皮共用记忆。
+
+## 13.3 CompanionCard（产品层概念）
+
+`CompanionCard` 为未来产品编目 / 展示概念，**不是** Alpha 数据库实现，**不进入** Brain Turn Input。
+
+组成：
+
+- companion identity  
+- personality profile  
+- voice profile  
+- avatar asset pack  
+- skill profile  
+- rarity metadata  
+
+Card → 激活 Companion 真源 → `buildSoberRuntimeContext()` → 既有 Brain 契约。
+
+## 13.4 R / SR / SSR 设计原则
+
+稀有度 **不得** 仅由文字世界观长度决定。
+
+价值因素：
+
+- Avatar 资产丰富度  
+- Voice 质量  
+- Personality 深度  
+- Skill 能力  
+- Relationship 成长潜力  
+
+稀有度不得引入第二条 LLM / Prompt 路径。本阶段不设计抽卡、保底或扭蛋池。
+
+## 13.5 PRODUCT UI LANGUAGE RULE
+
+**所有用户可见 UI 默认使用中文**（页面标题、按钮、导航、设置、状态提示、错误提示）。
+
+代码、变量、数据库字段继续使用英文。  
+角色对白语言由 Companion / 用户偏好决定，不受本规则强制。
+
+## 13.6 Runtime Contract 兼容性
+
+未来 Collection **不破坏** 已冻结切片：
+
+- `companionContext` — 投影**当前激活** Companion  
+- `relationshipContext` — 按 `(user, companionId)` 隔离  
+- `memoryContext` — 按当前 Companion 记忆空间检索  
+- `avatarContext` / `voiceContext` — 绑定当前 Companion 资产与会话  
+
+`BrainTurnInput` / `BrainTurnOutput` / Update Bus / 单 Prompt Compiler 保持不变。  
+扩展 Collection 时禁止修改 Phase 0.9 契约「预埋」Card 或抽卡字段。
+
+---
+
 ## 附录 A：关键不变式（Architecture Freeze）
 
 1. 只有一个 Prompt Compiler。  
@@ -1019,12 +1098,20 @@ ComfyUI / 静态插图管道 **不作为** Avatar 实时方案（DROP）。远�
 
 ## 附录 C：非目标清单（再次强调）
 
-- 多角色市场 / UGC / Creator 经济  
+- 多角色市场 / UGC / Creator 经济（≠ 未来受控 Companion Collection）  
 - SillyTavern 双栈主路径  
 - 完整 3D 数字人（Phase 1–4）  
 - 以 ComfyUI 冒充实时 Avatar  
 - 内测阶段完整计费与成长体系  
+- Alpha 阶段的 Collection / CompanionCard / 稀有度运营 / 抽卡实现  
+
+## 附录 D：未来产品方向索引
+
+| 文档 | 角色 |
+|------|------|
+| `COMPANION_COLLECTION_DESIGN.md` | Companion Collection / Card / 稀有度 / UI 语言 / 契约兼容性 |
+| 本文 §13 | Future Product Model 摘要 |
 
 ---
 
-*End of specification. No application code was created or modified in this phase.*
+*End of specification. Future Product Model is documentation-only; Runtime Contract implementation was not modified.*

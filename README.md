@@ -49,7 +49,33 @@ npm install
 npm run dev
 ```
 
-## 文档
+**产品 UI 语言**：用户可见文案默认中文；代码与数据库字段保持英文。
 
-- [ARCHITECTURE.md](./ARCHITECTURE.md) — 架构原则与模块边界
-- 各模块 README 见 `src/<module>/README.md`
+---
+
+## Documentation Index
+
+### 必读（入场）
+
+| | 文档 | 用途 |
+|---|------|------|
+| ⭐ | [`docs/PROJECT_CONTEXT.md`](./docs/PROJECT_CONTEXT.md) | 项目身份 · Agent / 新人第一阅读 |
+| ⭐ | [`docs/DEVELOPMENT_STATUS.md`](./docs/DEVELOPMENT_STATUS.md) | 当前 Phase · 里程碑 |
+| ⭐ | [`docs/DECISION_LOG.md`](./docs/DECISION_LOG.md) | 关键架构决策 |
+
+### 架构与契约
+
+| 文档 | 用途 |
+|------|------|
+| [`ARCHITECTURE.md`](./ARCHITECTURE.md) | 仓库级架构摘要与模块边界 |
+| [`docs/SOBER_AI_ARCHITECTURE_SPECIFICATION.md`](./docs/SOBER_AI_ARCHITECTURE_SPECIFICATION.md) | 架构 SSOT |
+| [`docs/YEYE_TO_SOBER_MIGRATION_REPORT.md`](./docs/YEYE_TO_SOBER_MIGRATION_REPORT.md) | YeYe 迁移审计 |
+| [`docs/BRAIN_TURN_CONTRACT.md`](./docs/BRAIN_TURN_CONTRACT.md) | Brain 回合契约 |
+| [`docs/UPDATE_BUS.md`](./docs/UPDATE_BUS.md) | 回合后更新总线 |
+| [`docs/COMPANION_COLLECTION_DESIGN.md`](./docs/COMPANION_COLLECTION_DESIGN.md) | 未来 Companion Collection（设计） |
+
+### 代码边界说明
+
+- Runtime Context SSOT：`src/runtime-context/`
+- 各模块 README：`src/<module>/README.md`
+- Agent 规则：[`AGENTS.md`](./AGENTS.md)
